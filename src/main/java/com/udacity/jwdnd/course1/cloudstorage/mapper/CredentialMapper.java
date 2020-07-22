@@ -21,7 +21,7 @@ public interface CredentialMapper {
     @Update("UPDATE CREDENTIALS SET URL=#{url}, USERNAME=#{userName}, PASSWORD=#{password}, KEY=#{key} WHERE CREDENTIALID=#{credentialId}")
     Integer updateCredentials(Credentials credentials);
 
-    @Delete("DELETE FROM CREDENTIALS WHERE CREDENTIALID=#{credentialId} and USERID=#{userId}")
+    @Delete("DELETE FROM CREDENTIALS WHERE CREDENTIALID=#{credentialId} ")
     Integer deleteSpecificCredential(Long credentialId);
 
     @Insert("INSERT INTO CREDENTIALS ( URL, USERNAME, KEY, PASSWORD, USERID ) "

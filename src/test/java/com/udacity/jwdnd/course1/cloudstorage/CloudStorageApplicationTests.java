@@ -50,19 +50,19 @@ class CloudStorageApplicationTests {
 	//Write Tests for User SignUp, Login, and Unauthorized Access Restrictions
 	public void testLoginAndLogout() {
 
-		//1. Test Signup
+		//1. Invalid User Login Test
+		String message1 = new String("Invalid username or password");
+		driver.get("http://localhost:" + this.port + "/login");
+		loginPage = new LoginPage(driver);
+		loginPage.login("sammat2", "nopass");
+		assertEquals(message1, loginPage.errorMessageDisplay());
+
+		//2. Test Signup
 		driver.get("http://localhost:" + this.port + "/signup");
 		signupPage = new SignupPage(driver);
 		signupPage.signUpUser("Sam", "Mat", "sammat", "nopass");
 		String message = new String("You successfully signed up! Please continue to the login page.");
 		assertEquals(message, signupPage.successMessageDisplay());
-
-		//2. Invalid User Login Test
-		String message2 = new String("Invalid username or password");
-		driver.get("http://localhost:" + this.port + "/login");
-		loginPage = new LoginPage(driver);
-		loginPage.login("sammat2", "nopass");
-		assertEquals(message2, loginPage.errorMessageDisplay());
 
 		//3. Valid User Login Test
 		driver.get("http://localhost:" + this.port + "/login");
@@ -90,12 +90,12 @@ class CloudStorageApplicationTests {
 		//1. Create User
 		driver.get("http://localhost:" + this.port + "/signup");
 		signupPage = new SignupPage(driver);
-		signupPage.signUpUser("Sam", "Mat", "sammat", "nopass");
+		signupPage.signUpUser("NotesMan", "Mat", "notesuser", "nopass");
 
 		//2. Login using User
 		driver.get("http://localhost:" + this.port + "/login");
 		loginPage = new LoginPage(driver);
-		loginPage.login("sammat", "nopass");
+		loginPage.login("notesuser", "nopass");
 
 		//3. Go to note tab and create a new note
 		driver.get("http://localhost:" + this.port + "/home");
@@ -146,12 +146,12 @@ class CloudStorageApplicationTests {
 		//1. Create User
 		driver.get("http://localhost:" + this.port + "/signup");
 		signupPage = new SignupPage(driver);
-		signupPage.signUpUser("Sam", "Mat", "sammat", "nopass");
+		signupPage.signUpUser("CredMan", "Mat", "creduser", "nopass");
 
 		//2. Login using User
 		driver.get("http://localhost:" + this.port + "/login");
 		loginPage = new LoginPage(driver);
-		loginPage.login("sammat", "nopass");
+		loginPage.login("creduser", "nopass");
 
 		//3. Go to credential tab and create a new credential
 		driver.get("http://localhost:" + this.port + "/home");

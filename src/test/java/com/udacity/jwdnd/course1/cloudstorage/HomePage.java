@@ -54,23 +54,21 @@ public class HomePage {
     }
 
     public String navNotesTabClick(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 5000);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("nav-notes-tab"))));
         navNotesTab.click();
         return navNotesTab.getText();
     }
 
     public void addNoteButtonClick(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 5000);
-        wait.until(webDriver -> webDriver.findElement(By.id("addNote")));
-        wait.until(webDriver -> webDriver.findElement(By.id("titleHead")));
-        wait.until(webDriver -> webDriver.findElement(By.id("titleDesc")));
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("addNote"))));
         addNoteButton.click();
         System.out.println("addNoteButton Clicked");
     }
 
     public void addNote(String noteIdInputText, String noteDescriptionText, WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 3000);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("note-title"))));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("note-description"))));
         //wait.until(webDriver -> webDriver.findElement(By.id("note-title")));
@@ -89,7 +87,7 @@ public class HomePage {
     }
 
     public void successGoBack(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 3000);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("clickSuccess"))));
         clickSuccess.click();
     }
@@ -99,7 +97,7 @@ public class HomePage {
     }
 
     public String readNotesList(WebDriver driver, Integer index) {
-        WebDriverWait wait = new WebDriverWait(driver, 3000);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("notesTBody"))));
         /*wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.tagName("tr"))));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.tagName("td"))));
@@ -114,7 +112,7 @@ public class HomePage {
     }
 
     public void editNote(String noteIdInputText, String noteDescriptionText, WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, 3000);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("note-title"))));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("note-description"))));
         //wait.until(webDriver -> webDriver.findElement(By.id("note-title")));
